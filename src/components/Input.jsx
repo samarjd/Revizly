@@ -20,10 +20,10 @@ const Input = ({ onSend }) => {
         onKeyDown={(e) => e.key === 'Enter' && handleSend()}
         placeholder="Type your message..."
       />
-      <p className='footer'>
-        Revizly can make mistakes so please verify the information before using it.
-        &copy; 2024 Revizly. All rights reserved.
-      </p>
+      <div className='footer'>
+        <p>Revizly can make mistakes so please verify the information before using it.</p>
+        <p>&copy; 2024 Revizly. All rights reserved.</p>
+      </div>
     </div>
     
   );
