@@ -1,0 +1,86 @@
+.connection-page {
+  width: 30rem;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.connection-page h1 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.connection-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.connection-page input {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.connection-page input:focus {
+  border-color: #007bff;
+}
+
+.connection-page button {
+  padding: 12px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.connection-page button:hover {
+  background-color: #0056b3;
+}
+
+.toggle-link {
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.toggle-link:hover {
+  text-decoration: underline;
+}
+
+form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+body:has(.connection-page){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 480px) {
+  .connection-page {
+    padding: 15px;
+    width: 90%;
+  }
+
+  .connection-page h1 {
+    font-size: 1.6rem;
+  }
+
+  .connection-page button {
+    font-size: 0.9rem;
+  }
+}

@@ -15,7 +15,7 @@
 
 .side-menu.collapsed h2 {
   margin-bottom: 20px;
-  color: #676767;
+  color: #888;
   font-weight: bold;
   font-style: italic;
   cursor: pointer; /* Change cursor to pointer for the toggle */
@@ -26,7 +26,6 @@
 
 
 .side-menu h2 {
-  margin-bottom: 20px;
   color: #676767;
   font-weight: bold;
   font-style: italic;
@@ -41,14 +40,14 @@
 }
 
 .side-menu li {
-  padding: 10px;
+  padding: 10px 5px;
   font-size: 15px;
   color: #fff;
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
-.side-menu .title-item:hover {
+.side-menu .title-item:hover,  .side-menu .title-item.active{
   background-color: #424242;
 }
 
@@ -73,6 +72,32 @@
   margin-bottom: 5px; /* Space between date and titles */
 }
 
-.title-item {
-  margin-left: 10px; /* Indent titles under their date */
+
+.navBrand{
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.navBrand button, .delete-btn{
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  color: #888;
+}
+
+.side-menu.collapsed .navBrand button{
+  display: none;
+}
+
+.navBrand button:hover, .delete-btn:hover{
+  color: #fff;
+}
+
+.conversation-side{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

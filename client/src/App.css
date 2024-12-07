@@ -52,6 +52,7 @@ body {
   flex-direction: column;
   overflow: hidden;
   margin-top: 60px;
+  position: relative;
 }
 
 .footer{
@@ -59,6 +60,25 @@ body {
   text-align: center;
   padding: 10px 0;
   width: 100%;
+  margin-top: 1rem;
+}
+
+.footer p{
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  color: #e5e5e5;
+}
+
+.footer p strong{
+  color: #fff;
+}
+
+strong{
+  font-weight: bolder;
+}
+
+.italic{
+  font-style: italic;
 }
 
 /* Custom scrollbar for WebKit browsers (Chrome, Safari) */
@@ -83,4 +103,20 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #aaa; /* Color of the scrollbar thumb on hover */
+}
+
+/* Add this to your App.css */
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: #f1f0f0;
+  background: #1717177d;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

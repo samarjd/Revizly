@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import '../assets/css/UserMenu.css';
 import avatar from '../assets/image/revizly.png';
 
-const UserMenu = () => {
+const UserMenu = ({ onLogout }) => { // Accept onLogout prop from parent
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
 
@@ -25,6 +25,11 @@ const UserMenu = () => {
     return () => document.removeEventListener('click', handleClickOutside);
   }, [isOpen]);
 
+  const handleLogout = () => {
+    localStorage.removeItem('authToken'); // Clear the auth token
+    onLogout(false); // Call the onLogout function passed as a prop to update connection state
+  };
+
   return (
     <div className="user-menu" ref={menuRef}>
       <div className="avatar" onClick={toggleMenu}>
@@ -32,9 +37,8 @@ const UserMenu = () => {
       </div>
       {isOpen && (
         <div className="dropdown">
-          <div>Profile</div>
-          <div>Settings</div>
-          <div>Logout</div>
+          
+          <div onClick={handleLogout}>Logout</div>
         </div>
       )}
     </div>
