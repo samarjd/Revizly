@@ -1,5 +1,7 @@
 const express = require('express');
 const cors = require('cors');
+const multer = require('multer');
+const path = require('path');  // Add this import
 
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
@@ -8,7 +10,6 @@ const Message = require('./models/Message');
 const User = require('./models/User'); // Assuming you have a User model
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
-const multer = require('multer');
 
 dotenv.config();
 
@@ -20,6 +21,8 @@ const bcrypt = require('bcrypt');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI, {
@@ -37,7 +40,7 @@ const storage = multer.diskStorage({
     }
 });
 
-const upload = multer({ storage });  // Ini
+const upload = multer({ storage });  // Initialize multer with storage settings
 
 // Middleware to authenticate JWT token
 const authenticateJWT = (req, res, next) => {
@@ -138,7 +141,7 @@ app.post('/messages', authenticateJWT, upload.single('file'), async (req, res) =
         // Prepare file location if a file was uploaded
         let fileLocation = null;
         if (req.file) {
-            fileLocation = `/uploads/${req.file.filename}`;  // Store the relative path to the file (URL format)
+            fileLocation = `uploads/${req.file.filename}`;  // Store the relative path to the file (URL format)
         }
 
         // Create a new message object

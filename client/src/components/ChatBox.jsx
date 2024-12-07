@@ -28,12 +28,14 @@ const ChatBox = ({ messages = [] }) => {
                 />
               ) : (
                 msg.fileLocation && (
+                  // eslint-disable-next-line react/jsx-no-target-blank
                   <a
-                    href={msg.fileLocation}
+                    href={`http://localhost:8000/${msg.fileLocation}`} // Assuming files are served from your server
+                    download // This triggers a download instead of opening the file in a new tab
+                    className="file-download-link"
                     target="_blank"
-                    rel="noopener noreferrer"
                   >
-                    View file
+                    Download file
                   </a>
                 )
               )}
