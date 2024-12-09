@@ -77,6 +77,8 @@ const Connection = ({ onConnect }) => {
                         name="password"
                         value={formData.password}
                         onChange={handleChange}
+                        autoComplete='on'
+                        minLength={6}
                         required
                     />
                 </div>
