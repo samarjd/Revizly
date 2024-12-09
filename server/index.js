@@ -217,17 +217,20 @@ app.delete('/conversations/:id', authenticateJWT, async (req, res) => {
 
 // Login route for generating JWT tokens
 app.post('/login', async (req, res) => {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
     try {
-        const user = await User.findOne({ username });
+        const user = await User.findOne({ email: email });
         
         if (!user || !bcrypt.compare(password, user.password)) { // Make sure to hash passwords in production
             return res.status(401).json({ error: 'Invalid username or password' });
         }
 
         // Create JWT token
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ 
+            id: user._id,
+            email: user.email,
+        }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
         res.json({ token });
     } catch (error) {

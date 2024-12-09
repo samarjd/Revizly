@@ -37,6 +37,8 @@ const Connection = ({ onConnect }) => {
         console.log(data.message);
 
         if (!isRegistering) {
+        // alert a hello message to the user
+        alert(`Hello, ${formData.email}!`);
         localStorage.setItem('authToken', data.token);
         onConnect(true);
         } else {

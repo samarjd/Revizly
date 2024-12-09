@@ -6,6 +6,12 @@ const UserMenu = ({ onLogout }) => { // Accept onLogout prop from parent
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
 
+  // get logged in user's name from jwt token
+  const token = localStorage.getItem('authToken');
+  const base64Url = token.split('.')[1];
+  const base64 = base64Url.replace('-', '+').replace('_', '/');
+  const { email } = JSON.parse(window.atob(base64)) || {};
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -37,7 +43,7 @@ const UserMenu = ({ onLogout }) => { // Accept onLogout prop from parent
       </div>
       {isOpen && (
         <div className="dropdown">
-          
+          <div>{email}</div>
           <div onClick={handleLogout}>Logout</div>
         </div>
       )}
