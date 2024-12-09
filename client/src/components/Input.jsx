@@ -41,6 +41,7 @@ const Input = ({ onSend, onFileUpload }) => {
         id="file-upload"
         type="file"
         onChange={handleFileChange}
+        accept=".txt"
       />
 
       {/* Send button */}
